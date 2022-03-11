@@ -1,0 +1,115 @@
+*{
+  margin: 0;
+  padding: 0;
+}
+body{
+	background-color: #DDDDDD;
+  font-family: 'Times New Roman', Times, serif;
+}
+a {
+	text-decoration: none;
+}
+.login {
+	width: 400px;
+	margin: 16px auto;
+	font-size: 16px;
+}
+.login-form{
+  margin-top: 80px;
+}
+.login-header,
+.login p {
+	margin-top: 0;
+	margin-bottom: 0;
+}
+.login-header {
+  background: #33b5e5;
+  padding: 20px;
+  font-size: 1.4em;
+  font-weight: normal;
+  text-align: center;
+  color: #fff;
+}
+.grid {
+  background: #fff;
+  padding:25px;
+}
+.login input[type="text"],
+.login input[type="password"],
+.login input[type="submit"]
+ {
+  background: #fff;
+  margin: 25px 0px;
+  color: #000;
+  box-sizing: border-box;
+  display: block;
+  width: 100%;
+  border-width: 1px;
+  border-style: solid;
+  padding: 13px;
+  outline:none;
+  font-family: inherit;
+  font-size: 0.95em;
+}
+.login input[type="submit"] {
+  background: #FF3333;
+  border-color: transparent;
+  color: #fff;
+  cursor: pointer;
+}
+.bottom-header h3 {
+    color: #33b5e5;
+    text-align: center;
+    font-size:20px;
+	margin-top: 0px;
+}
+.social-links{
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+.social-links ul{
+	text-align: center;
+}
+.social-links ul li {
+    display: inline-block;
+}
+.social-links a {
+	width: 40px;
+  	height: 40px;
+  	display: inline-block;
+  	border-radius: 50%;
+  	font-size: 25px;
+	color: #fff;
+	margin: 0 5px 0 5px;
+}
+.social-links i {
+    line-height: 43px;
+    font-size: 18px; 
+}
+.facebook {
+ 	background: #3b5998;
+}
+.twitter {
+  	background: #55acee;
+}
+.googleplus {
+  	background: #dd4b39;
+}
+.bottom-text {
+  box-sizing: border-box;
+  color: #666666;
+  font-size: 12px;
+  text-align: center;
+}
+.bottom-text p  {
+	font-size:14px;
+}
+.bottom-text a {
+  color: #33b5e5;
+  font-size:14px;
+}
+.bottom-text p a{
+	color:#33b5e5;
+	margin-left: 5px;
+}

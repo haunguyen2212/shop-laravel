@@ -1,0 +1,27 @@
+#complete{
+	margin-top: 15px;
+	border: 1px solid #6c0;
+	padding: 10px 10px;
+}
+#complete p{
+	color: #6c0;
+	text-align: justify;
+}
+#fail{
+	margin-top: 15px;
+	border: 1px solid red;
+	padding: 10px 10px;
+}
+#fail p{
+	color: red;
+	text-align: justify;
+}
+p>a{
+	color: #000;
+	font-weight: bold;
+	float: right;
+}
+.return a:hover{
+	text-decoration: none;
+	color: #232323;
+}

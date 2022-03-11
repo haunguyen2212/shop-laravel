@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">	
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<title></title>
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" />
+  <link rel="stylesheet" href="css/master.css">
+  <link rel="stylesheet" href="css/productdetail.css">
+</head>
+<body>
+	<header>
+    <div class="container">
+      <div class="row">
+        <div class="logo col-md-3 col-sm-6">
+          <img src="img/logo.png">
+        </div>
+        <div class="col-md-6 col-sm-12 menu-search">
+          <form id="search">
+            <input type="text" placeholder="Tìm sản phẩm, thương hiệu mong muốn">
+            <input type="submit" value="Tìm kiếm">
+          </form>
+        </div>
+        <div class="col-md-3 col-sm-6 user-shortcut">
+          <div id="user"><i class="fas fa-user-circle"></i> ĐĂNG NHẬP</div>
+          <div id="cart">
+            <i class="fas fa-shopping-cart"></i>
+          </div>
+        </div>   
+      </div>
+    </div> 
+  </header>
+  <section id="body">
+    <div class="container">
+      <div class="row">
+        <!--SiderBar-->
+        <div id="sidebar" class="col-md-3">
+          <div id="menu">
+            <ul>
+              <li>DANH MỤC SẢN PHẨM</li>
+              <li><a href="">Điện thoại</a></li>
+              <li><a href="">Laptop</a></li>
+              <li><a href="">Đồng hồ</a></li>
+              <li><a href="">Phụ kiện</a></li>
+            </ul>
+          </div>
+          <div id="banner-left">
+            <div class="banner-left-item">
+              <img src="img/banner/banner-l-1.png">
+            </div>
+            <div class="banner-left-item">
+              <img src="img/banner/banner-l-2.png">
+            </div>
+            <div class="banner-left-item">
+              <img src="img/banner/banner-l-3.png">
+            </div>
+            <div class="banner-left-item">
+              <img src="img/banner/banner-l-4.png">
+            </div>
+            <div class="banner-left-item">
+              <img src="img/banner/banner-l-5.png">
+            </div>
+            <div class="banner-left-item">
+              <img src="img/banner/banner-l-7.png">
+            </div>
+          </div>
+        </div>
+        <!--Endsiderbar-->
+        
+        <div class="col-md-9">
+          <!--Slider-->
+          <div id="slider" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-indicators">
+              <button type="button" data-bs-target="#slider" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+              <button type="button" data-bs-target="#slider" data-bs-slide-to="1" aria-label="Slide 2"></button>
+              <button type="button" data-bs-target="#slider" data-bs-slide-to="2" aria-label="Slide 3"></button>
+              <button type="button" data-bs-target="#slider" data-bs-slide-to="3" aria-label="Slide 4"></button>
+              <button type="button" data-bs-target="#slider" data-bs-slide-to="4" aria-label="Slide 5"></button>
+            </div>
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <img src="img/banner/banner-1.png" class="d-block w-100" alt="">
+              </div>
+              <div class="carousel-item">
+                <img src="img/banner/banner-2.png" class="d-block w-100" alt="">
+              </div>
+              <div class="carousel-item">
+                <img src="img/banner/banner-3.png" class="d-block w-100" alt="">
+              </div>
+              <div class="carousel-item">
+                <img src="img/banner/banner-4.png" class="d-block w-100" alt="">
+              </div>
+              <div class="carousel-item">
+                <img src="img/banner/banner-5.png" class="d-block w-100" alt="">
+              </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#slider" data-bs-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#slider" data-bs-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Next</span>
+            </button>
+          </div>
+
+          <!--EndSlider-->
+          <!--Content-->
+          <div id="content">
+            <div class="row">
+              <div id="breadcrumb" class="col-md-12">
+                <nav aria-label="breadcrumb">
+                  <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="#"><i class="fas fa-home"></i> Trang chủ</a></li>
+                    <li class="breadcrumb-item"><a href="#">Điện thoại</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Iphone 11 64GB</li>
+                  </ol>
+                </nav>
+              </div>
+              <div class="col-md-7 col-sm-6">
+                <!--Product Image-->
+                <div class="product-caption">Iphone 11 64GB</div>
+                <div class="product-image">
+                  <div class="mySlides">
+                    <div class="numbertext">1 / 4</div>
+                    <img src="img/product_detail/iphone-11-do.jpg" style="width:100%">
+                  </div>
+
+                  <div class="mySlides">
+                    <div class="numbertext">2 / 4</div>
+                    <img src="img/product_detail/iphone-11-vang.jpg" style="width:100%">
+                  </div>
+
+                  <div class="mySlides">
+                    <div class="numbertext">3 / 4</div>
+                    <img src="img/product_detail/iphone-11-trang.jpg" style="width:100%">
+                  </div>
+
+                  <div class="mySlides">
+                    <div class="numbertext">4 / 4</div>
+                    <img src="img/product_detail/iphone-11-xanh-la.jpg" style="width:100%">
+                  </div>
+                  <a class="prev" onclick="plusSlides(-1)">❮</a>
+                  <a class="next" onclick="plusSlides(1)">❯</a>
+
+                  <div class="caption-container">
+                    <p id="caption"></p>
+                  </div>
+
+                  <div class="row">
+                    <div class="column">
+                      <img class="demo cursor" src="img/product_detail/iphone-11-do.jpg" style="width:100%" onclick="currentSlide(1)" alt="Đỏ">
+                    </div>
+                    <div class="column">
+                      <img class="demo cursor" src="img/product_detail/iphone-11-vang.jpg" style="width:100%" onclick="currentSlide(2)" alt="Vàng">
+                    </div>
+                    <div class="column">
+                      <img class="demo cursor" src="img/product_detail/iphone-11-trang.jpg" style="width:100%" onclick="currentSlide(3)" alt="Trắng">
+                    </div>
+                    <div class="column">
+                      <img class="demo cursor" src="img/product_detail/iphone-11-xanh-la.jpg" style="width:100%" onclick="currentSlide(4)" alt="Xanh Lá">
+                    </div>
+                  </div>
+                </div>
+
+                <!--Description-->
+                <div class="product-caption">MÔ TẢ SẢN PHẨM</div>
+                <div class="product-description">
+                  <div>Tháng 09/2019, Apple đã chính thức trình làng bộ 3 siêu phẩm iPhone 11, trong đó phiên bản iPhone 11 64GB có mức giá rẻ nhất nhưng vẫn được nâng cấp mạnh mẽ như iPhone Xr ra mắt trước đó.</div>
+                  <div class="descript-caption">Giá: <span class="descript-price">9.000.000</span> <span class="descript-discount">10.000.000</span> <span class="discount-percent">-10%</span></div>
+                  <div class="descript-caption">Tình trạng: <span class="descript-state">Còn hàng</span></div>
+                </div>
+
+                <!--Comment-->
+                <div class="product-caption">BÌNH LUẬN (2)</div>
+                <div class="product-comment">
+                    <div class="form-floating">
+                      <textarea class="form-control" id="form-comment" style="height: 100px; outline: none"></textarea>
+                      <label for="form-comment">Bình luận về sản phẩm</label>
+                      <button class="btn btn-sm btn-danger float-end mt-2">Gửi bình luận</button>
+                    </div>
+                    <hr>
+                    <div id="list-comment">
+                    	<div class="comment-ask">
+                    		<div class="row-user">
+                    			<img src="img/avatar/avatar.jpg" alt="Avatar" class="avatar">
+                    			<span>admin</span>
+                    		</div>
+                    		<div class="comment-content">Siêu thị gần nhà ko còn hàng. Muốn mua trả góp phải đến chỗ có hàng đúng ko ạ</div>
+                    		<div class="action-user">
+                    			<a href="">Tra loi</a>
+                    			<span> - </span>
+                    			<span>2 ngay truoc</span>
+                    		</div>
+                    	</div>
+                    	<div class="comment-ask">
+                    		<div class="row-user">
+                    			<img src="img/avatar/avatar.jpg" alt="Avatar" class="avatar">
+                    			<span>admin</span>
+                    		</div>
+                    		<div class="comment-content">Shop có đt nào dưới 5 triệu 128gb pin 5000 mah ko ạ ! Có nhưng loại đt nào đáp ứng đủ yêu cầu trên ko ạ !</div>
+                    	</div>
+                    </div>
+                </div>
+              </div>
+
+              <div class="col-md-5 col-sm-6">
+                  <div class="product-detail">
+                    <div class="product-caption">Chi tiết sản phẩm</div>
+                    <table class="table table-striped">
+                      <tbody>
+                        <tr>
+                          <td>Màn hình:</td>
+                          <td>OLED6.1"Super Retina XDR</td>
+                        </tr>
+                        <tr>
+                          <td>Hệ điều hành:</td>
+                          <td>iOS 14</td>
+                        </tr>
+                        <tr>
+                          <td>Camera sau:</td>
+                          <td>2 camera 12 MP</td>
+                        </tr>
+                        <tr>
+                          <td>Camera trước:</td>
+                          <td>12 MP</td>
+                        </tr>
+                        <tr>
+                          <td>Chip:</td>
+                          <td>Apple A14 Bionic</td>
+                        </tr>
+                        <tr>
+                          <td>RAM:</td>
+                          <td>4 GB</td>
+                        </tr>
+                        <tr>
+                          <td>Bộ nhớ trong:</td>
+                          <td>64 GB</td>
+                        </tr>
+                        <tr>
+                          <td>SIM:</td>
+                          <td>1 Nano SIM & 1 eSIM Hỗ trợ 5G</td>
+                        </tr>
+                        <tr>
+                          <td>Pin, Sạc:</td>
+                          <td>2815 mAh 20W</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <div class="row payment">
+                    <div class="col-md-12 col-sm-12 purchase">
+                      <button type="button" data-bs-toggle="modal" data-bs-target="#purchaseModal">MUA NGAY</button>
+
+                      <!-- Modal -->
+                      <div class="modal fade" id="purchaseModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="purchaseModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                          <div class="modal-content">
+                            <form action="" method="get">
+                              <div class="modal-header">
+                                <h5 class="modal-title" id="purchaseModalLabel">Iphone 11 64GB</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                              </div>
+                              <div class="modal-body">
+                                <div class="descript-caption">Chọn màu:</div>
+                                <div class="row">
+                                  <div class="choose-item col-3">
+                                    <img src="img/product_detail/iphone-11-do.jpg">
+                                    <input type="radio" name="color" class="form-check-input" value="1" checked>
+                                    <div class="color">Đỏ</div>
+                                  </div>
+                                  <div class="choose-item col-3">
+                                    <img src="img/product_detail/iphone-11-trang.jpg">
+                                    <input type="radio" name="color" class="form-check-input" value="2">
+                                    <div class="color">Trắng</div>
+                                  </div>
+                                  <div class="choose-item col-3">
+                                    <img src="img/product_detail/iphone-11-vang.jpg">
+                                    <input type="radio" name="color" class="form-check-input" value="3">
+                                    <div class="color">Vàng</div>
+                                  </div>
+                                  <div class="choose-item col-3">
+                                    <img src="img/product_detail/iphone-11-xanh-la.jpg">
+                                    <input type="radio" name="color" class="form-check-input" value="4" disabled>
+                                    <div class="color">Xanh lá</div>
+                                  </div>
+                                </div>
+                                <div class="descript-caption">Giá: <span class="descript-price">9.000.000</span> <span class="descript-discount">10.000.000</span></div>
+                              </div>
+                            <div class="modal-footer">
+                              <button type="submit" class="btn btn-sm btn-danger">Thêm vào giỏ hàng</button>
+                            </div>
+                          </div>
+                          </form>
+                        </div>
+                      </div>
+
+                    </div>
+                    <div class="col-md-12 col-sm-12 installment">
+                      <div><button>MUA TRẢ GÓP 0%<br>Duyệt trong 5 phút</button></div>
+                      <div><button>TRẢ GÓP QUA THẺ<br>Visa, Mastercard, JCB</button></div>
+                    </div>
+                  </div>
+              </div>
+            </div>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <footer class="text-center text-white">
+    <div class="container p-4 pb-0">
+      <section class="mb-4">
+        <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button">
+          <i class="fab fa-facebook-f"></i>
+        </a>
+
+        <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button">
+          <i class="fab fa-twitter"></i>
+        </a>
+        <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button">
+          <i class="fab fa-google"></i>
+        </a>
+        <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button">
+          <i class="fab fa-instagram"></i>
+        </a>
+        <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+        <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button">
+          <i class="fab fa-github"></i>
+        </a>
+      </section>
+    </div>
+    <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">© 2021 Copyright: <a class="text-white" href="">lionelstore@gmail.com</a></div>
+  </footer>
+ 
+  <script type="text/javascript" src="js/jquery-3.6.0.min.js"></script>
+  <script type="text/javascript" src="js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="js/productdetail.js"></script>
+  
+</body>
+</html>

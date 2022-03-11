@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">	
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<title></title>
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" />
+  <link rel="stylesheet" href="css/master.css">
+</head>
+<body>
+	<header>
+    <div class="container">
+      <div class="row">
+        <div class="logo col-md-3 col-sm-6">
+          <img src="img/logo.png">
+        </div>
+        <div class="col-md-6 col-sm-12 menu-search">
+          <form id="search">
+            <input type="text" placeholder="Tìm sản phẩm, thương hiệu mong muốn">
+            <input type="submit" value="Tìm kiếm">
+          </form>
+        </div>
+        <div class="col-md-3 col-sm-6 user-shortcut">
+          <div id="user"><i class="fas fa-user-circle"></i> ĐĂNG NHẬP</div>
+          <div id="cart">
+            <i class="fas fa-shopping-cart"></i>
+          </div>
+          <!-- <div id="avatar">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS24XJ7ttiXzw5KsxCDQFGi6yND6g23FiDEyQ&usqp=CAU">
+            <span>admincp</span>
+          </div> -->
+        </div>   
+      </div>
+    </div> 
+  </header>
+  <section id="body">
+    <div class="container">
+      <div class="row">
+        <!--SiderBar-->
+        <div id="sidebar" class="col-md-3">
+          <div id="menu">
+            <ul>
+              <li>DANH MỤC SẢN PHẨM</li>
+              <li><a href="">Điện thoại</a></li>
+              <li><a href="">Laptop</a></li>
+              <li><a href="">Đồng hồ</a></li>
+              <li><a href="">Phụ kiện</a></li>
+            </ul>
+          </div>
+          <div id="banner-left">
+            <div class="banner-left-item">
+              <img src="img/banner/banner-l-1.png">
+            </div>
+            <div class="banner-left-item">
+              <img src="img/banner/banner-l-2.png">
+            </div>
+            <div class="banner-left-item">
+              <img src="img/banner/banner-l-3.png">
+            </div>
+            <div class="banner-left-item">
+              <img src="img/banner/banner-l-4.png">
+            </div>
+            <div class="banner-left-item">
+              <img src="img/banner/banner-l-5.png">
+            </div>
+            <div class="banner-left-item">
+              <img src="img/banner/banner-l-7.png">
+            </div>
+          </div>
+        </div>
+        <!--Endsiderbar-->
+        <div class="col-md-9">
+          <!--Slider-->
+          <div id="slider" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-indicators">
+              <button type="button" data-bs-target="#slider" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+              <button type="button" data-bs-target="#slider" data-bs-slide-to="1" aria-label="Slide 2"></button>
+              <button type="button" data-bs-target="#slider" data-bs-slide-to="2" aria-label="Slide 3"></button>
+              <button type="button" data-bs-target="#slider" data-bs-slide-to="3" aria-label="Slide 4"></button>
+              <button type="button" data-bs-target="#slider" data-bs-slide-to="4" aria-label="Slide 5"></button>
+            </div>
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <img src="img/banner/banner-1.png" class="d-block w-100" alt="">
+              </div>
+              <div class="carousel-item">
+                <img src="img/banner/banner-2.png" class="d-block w-100" alt="">
+              </div>
+              <div class="carousel-item">
+                <img src="img/banner/banner-3.png" class="d-block w-100" alt="">
+              </div>
+              <div class="carousel-item">
+                <img src="img/banner/banner-4.png" class="d-block w-100" alt="">
+              </div>
+              <div class="carousel-item">
+                <img src="img/banner/banner-5.png" class="d-block w-100" alt="">
+              </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#slider" data-bs-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#slider" data-bs-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Next</span>
+            </button>
+          </div>
+
+          <!--EndSlider-->
+          <!--Content-->
+          <div id="content">
+            
+            
+             <div class="container">
+              <div class="row g-5 ">
+                <div class="col-md-6 col-lg-4 order-md-last">
+                  <h4 class="d-flex justify-content-between align-items-center mb-3">
+                    <span class="text-danger fw-bold">Giỏ hàng</span>
+                    <span class="badge bg-danger rounded-pill">3</span>
+                  </h4>
+                  <ul class="list-group mb-3">
+                    <li class="list-group-item d-flex justify-content-between lh-sm">
+                      <div>
+                        <h6 class="my-0">Iphone 12 Pro Max</h6>
+                        <small class="text-muted">Xanh x2</small>
+                      </div>
+                      <span class="text-muted">70.000.000đ</span>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between lh-sm">
+                      <div>
+                        <h6 class="my-0">Samsung A50</h6>
+                        <small class="text-muted">Xanh lá x1</small>
+                      </div>
+                      <span class="text-muted">6.200.000đ</span>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between lh-sm">
+                      <div>
+                        <h6 class="my-0">Lenovo Ideapad 3 15ITL6 i3 1115G4 (82H8005CVN)</h6>
+                        <small class="text-muted">Đen x1</small>
+                      </div>
+                      <span class="text-muted">19.250.000đ</span>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between">
+                      <span class="text-danger fw-bold">Tổng thanh toán</span>
+                      <strong>95.450.000đ</strong>
+                    </li>
+                  </ul>
+
+                </div>
+                <div class="col-md-6 col-lg-8">
+                  <h4 class="mb-3 text-danger fw-bold">Thông tin khách hàng</h4>
+                  <form>
+                    <div class="row g-3 ">
+                      <div class="col-sm-6">
+                        <label for="firstName" class="form-label fw-bold">Họ:</label>
+                        <input type="text" class="form-control" name="firstName">
+                      </div>
+
+                      <div class="col-sm-6">
+                        <label for="lastName" class="form-label fw-bold">Tên:</label>
+                        <input type="text" class="form-control" name="lastName">
+                      </div>
+
+
+                      <div class="col-12">
+                        <label for="email" class="form-label fw-bold">Số điện thoại:</label>
+                        <input type="text" class="form-control" name="phone" placeholder="Nhập số điện thoại">
+                      </div>
+
+                      <div class="col-md-4">
+                        <label for="country" class="form-label fw-bold">Tỉnh, thành phố</label>
+                        <select class="form-select" name="country" required>
+                          <option value="">Chọn tỉnh</option>
+                        </select>
+                      </div>
+
+                      <div class="col-md-4">
+                        <label for="state" class="form-label fw-bold">Quận, huyện</label>
+                        <select class="form-select" name="state" required>
+                          <option value="">Chọn quận, huyện</option>
+                        </select>
+                      </div>
+
+                      <div class="col-md-4">
+                        <label for="state" class="form-label fw-bold">Xã, phường</label>
+                        <select class="form-select" name="state" required>
+                          <option value="">Chọn xã</option>
+                        </select>
+                      </div>
+
+                      <div class="col-12">
+                        <label for="address" class="form-label fw-bold">Địa chỉ giao hàng:</label>
+                        <input type="text" class="form-control" name="address" placeholder="Nhập số nhà, số đường" required>
+                      </div>
+
+                    </div>
+
+                    <hr class="my-4">
+
+                    <button class="w-100 btn btn-danger btn-lg" type="submit">Đặt hàng ngay</button>
+                  </form>
+                </div>
+              </div>
+            </div>
+
+            
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<footer class="text-center text-white">
+  <div class="container p-4 pb-0">
+    <section class="mb-4">
+      <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button">
+        <i class="fab fa-facebook-f"></i>
+      </a>
+
+      <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button">
+        <i class="fab fa-twitter"></i>
+      </a>
+      <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button">
+        <i class="fab fa-google"></i>
+      </a>
+      <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button">
+        <i class="fab fa-instagram"></i>
+      </a>
+      <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button">
+        <i class="fab fa-linkedin-in"></i>
+      </a>
+      <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button">
+        <i class="fab fa-github"></i>
+      </a>
+    </section>
+  </div>
+  <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">© 2021 Copyright: <a class="text-white" href="">lionelstore@gmail.com</a></div>
+</footer>
+<script type="text/javascript" src="js/jquery-3.6.0.min.js"></script>
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
+</body>
+</html>

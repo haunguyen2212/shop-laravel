@@ -1,0 +1,27 @@
+#wrap-inner{
+    margin-top: 0px;
+}
+.order-info div{
+    font-weight: bold;
+    margin-top: 5px;
+}
+.order-info div span{
+    font-weight: normal;
+}
+.table thead tr th{
+    text-align: center;
+}
+.table tbody tr td{
+    text-align: center;
+    vertical-align: middle;
+}
+.last-col{
+    font-weight: bold;
+}
+.last-col span{
+    color: red;
+}
+.order-footer{
+    margin-top: -10px;
+    float: right;
+}

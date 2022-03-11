@@ -1,0 +1,243 @@
+.avatar {
+  vertical-align: middle;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+}
+.comment-ask{
+  margin-bottom: 10px;
+  border: solid 1px #DCDCDC;
+  border-radius: 5px;
+}
+.row-user{
+  padding: 10px;
+}
+.row-user span{
+  font-weight: bold;
+}
+.comment-content{
+  padding: 0 10px 0;
+}
+.action-user{
+  padding: 0 10px 5px;
+  font-size: 14px;
+  color: #999;
+}
+.action-user a:first-child{
+  color: #288ad9;
+}
+.action-user a:last-child{
+  color: #999;
+}
+.product-image{
+	width: 100%;
+  position: relative;
+  border: solid 1px #e0e0e0;
+  margin-bottom: 10px;
+}
+
+.product-image .row{
+  width: 100%;
+  margin-left: 0;
+}
+.product-detail, .payment{
+  width: 100%;
+  margin: 0;
+}
+.table{
+  border: solid 1px #e0e0e0;
+}
+.purchase{
+  width: 100%;
+  background-color: rgb(251,110,46);
+  text-align: center;
+  border-radius: 5px;
+  padding: 10px;
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+.purchase>button, .installment button{
+  border: none;
+  background-color: transparent;
+}
+.installment{
+  position: relative;
+  width: 100%;
+  text-align: center;
+  margin-bottom: 10px;
+}
+.installment div{
+  position: absolute;
+  width: 49%;
+  border-radius: 5px;
+  padding: 8px;
+  background-color: rgb(47,127,237);
+}
+.installment div:first-child{
+  top: 0;
+  left: 0; 
+}
+.installment div:last-child{
+  top: 0;
+  right: 0;
+}
+.purchase button, .installment button{
+  color: #fff;
+}
+.product-description{
+  margin-top: -5px;
+}
+.descript-caption{
+  font-size: 16px;
+  font-weight: bold;
+}
+.descript-price{
+  font-size: 20px;
+  color: red;
+  font-weight: bold;
+}
+.descript-discount{
+  font-size: 13px;
+  font-style: italic;
+  text-decoration: line-through;
+  color: #909090;
+  font-weight: normal;
+}
+.discount-percent{
+  font-size: 15px;
+  color: red;
+}
+.descript-state{
+  font-size: 16px;
+  font-weight: bold;
+  color: red;
+}
+.form-floating{
+  height: 135px;
+}
+.form-floating label{
+  color: rgba(0, 0, 0, 0.5);
+}
+.modal-title{
+  color: #cd1817;
+  text-transform: uppercase;
+  font-size: 20px;
+  font-weight: bold;
+}
+.modal-body{
+  text-align: left;
+}
+.choose-item{
+  margin-top: 10px;
+  margin-bottom: 10px;
+  border: 1px #e0e0e0 solid;
+}
+.choose-item img{
+  width: 100px;
+  margin-top: 10px;
+}
+.choose-item input{
+  margin-top: 10px;
+  margin-left: 44%;
+  color: blue;
+}
+.color{
+  width: 100%;
+  text-align: center;
+  font-size: 13px;
+}
+.form-check-input{
+  width: 0.8em;
+  height: 0.8em;
+}
+.form-check-input:checked {
+  background-color: #858285;
+  border-color: #858285;
+}
+@media (max-width: 992px) {
+  .installment{
+    display: none;
+  }
+}
+
+/* Position the image container (needed to position the left and right arrows) */
+.container {
+  position: relative;
+}
+
+/* Hide the images by default */
+.mySlides {
+  display: none;
+}
+
+/* Add a pointer when hovering over the thumbnail images */
+.cursor {
+  cursor: pointer;
+}
+
+/* Next & previous buttons */
+.prev,
+.next {
+  cursor: pointer;
+  position: absolute;
+  top: 40%;
+  width: auto;
+  padding: 16px;
+  margin-top: -50px;
+  color: #a0a0a0;
+  font-weight: bold;
+  font-size: 20px;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+/* Position the "next button" to the right */
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+/* Number text (1/3 etc) */
+.numbertext {
+  color: #000;
+  font-size: 12px;
+  padding: 8px 12px;
+  position: absolute;
+  top: 0;
+}
+
+/* Container for image text */
+.caption-container {
+  text-align: center;
+  background-color: #c0c0c0;
+  width: 100%;
+  height: 25px;
+  padding: 2px 16px;
+  color: white;
+  line-height: 20px;
+}
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Six columns side by side */
+.column {
+  float: left;
+  width: 25%;
+  border: solid 1px #e0e0e0;
+  padding: 10px;
+}
+
+/* Add a transparency effect for thumnbail images */
+.demo {
+  opacity: 0.6;
+}
+
+.active,
+.demo:hover {
+  opacity: 1;
+}
