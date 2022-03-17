@@ -56,6 +56,7 @@ Route::group(['prefix' => 'checkout', 'middleware' => 'auth'], function(){
 
 Route::group(['prefix' => 'admin'], function(){
 	Route::get('/', [Admin\HomeController::class, 'index'])->name('admin.home');
+	Route::get('category/{id}', [Admin\HomeController::class, 'getCategory'])->name('admin.category');
 });
 
 Route::get('/model', function(){

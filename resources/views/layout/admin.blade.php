@@ -138,7 +138,6 @@
               <p>
                 Danh mục
 				<i class="fas fa-angle-left right"></i>
-				<span class="badge badge-info right">4</span>
               </p>
             </a>
 			<ul class="nav nav-treeview">
@@ -156,28 +155,22 @@
               <p>
                 Sản phẩm
                 <i class="fas fa-angle-left right"></i>
-                <span class="badge badge-info right">100</span>
+                <span class="badge badge-info right">{{ $num_product }}</span>
               </p>
             </a>
             <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="pages/layout/top-nav.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Điện thoại</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="pages/layout/boxed.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Laptop</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="pages/layout/fixed-sidebar.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Đồng hồ</p>
-                </a>
-              </li>   
+
+              @if (isset($categories) && $categories->count() > 0)
+                @foreach ($categories as $category)
+                  <li class="nav-item">
+                    <a href="{{ route('admin.category', ['id' => $category->product_category_id ] )}}" class="nav-link">
+                      <i class="far fa-circle nav-icon"></i>
+                      <p>{{ $category->product_category_name }}</p>
+                    </a>
+                  </li>
+                @endforeach
+              @endif
+                 
             </ul>
           </li>
 		  
@@ -187,7 +180,7 @@
               <p>
                 Đơn hàng
                 <i class="fas fa-angle-left right"></i>
-				<span class="badge badge-info right">5</span>
+				<span class="badge badge-info right">{{ $num_order }}</span>
               </p>
             </a>
             <ul class="nav nav-treeview">
