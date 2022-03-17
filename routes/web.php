@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Front;
+use App\Http\Controllers\Admin;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -51,6 +52,10 @@ Route::group(['prefix' => 'checkout', 'middleware' => 'auth'], function(){
 	Route::post('vnpay', [Front\VNPayController::class, 'vnpayPayment'])->name('vnpay.post');
 	Route::get('vnpay/return/save',[Front\VNPayController::class, 'getInfoVNPayPayment'])->name('vnpay.save');
 	Route::get('order/cancel/{id}',[Front\CheckoutController::class, 'cancelOrder'])->name('order.cancel');
+});
+
+Route::group(['prefix' => 'admin'], function(){
+	Route::get('/', [Admin\HomeController::class, 'index'])->name('admin.home');
 });
 
 Route::get('/model', function(){

@@ -9,7 +9,7 @@ class Ward extends Model
 {
     use HasFactory;
 
-    protected $table = 'Wards';
+    protected $table = 'wards';
     protected $primaryKey = 'id';
     protected $guarded = [];
 

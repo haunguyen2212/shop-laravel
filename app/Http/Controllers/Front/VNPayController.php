@@ -92,7 +92,6 @@ class VNPayController extends Controller
         $order = Order::find($id);
         $update = $order->update(['payment_type' => 'Thanh toán online', 'payment_status' => 1]);
         if($update){
-            Toastr::success('Thanh toán thành công thành công');
             return redirect()->route('orderDetail', ['id' => $id]);
         }
     }

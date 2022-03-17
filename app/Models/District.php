@@ -9,7 +9,7 @@ class District extends Model
 {
     use HasFactory;
 
-    protected $table = 'Districts';
+    protected $table = 'districts';
     protected $primaryKey = 'id';
     protected $guarded = [];
 

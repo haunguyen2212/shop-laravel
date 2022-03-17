@@ -45,7 +45,7 @@
           <div class="row g-3 ">
 
             @csrf
-            <input type="text" class="form-control" name="orderId" value="{{ md5(uniqid(rand(), true)) }}">
+            <input type="hidden" class="form-control" name="orderId" value="{{ md5(uniqid(rand(), true)) }}">
 
             <div class="col-sm-6">
               <label for="firstName" class="form-label fw-bold">Họ:</label>
