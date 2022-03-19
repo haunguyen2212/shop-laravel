@@ -11,6 +11,7 @@ class HomeController extends Controller
     //
     public function index(){
         $product = ProductCategory::all();
-        return view('layout.admin');
+        return view('backend.home');
     }
+
 }
