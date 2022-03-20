@@ -222,7 +222,7 @@
             </a>
           </li>
 		  <li class="nav-item has-treeview">
-            <a href="#" id="account" class="nav-link">
+            <a href="{{ route('admin.account') }}" id="account" class="nav-link">
               <i class="nav-icon fas fa-users"></i>
               <p>
                 Tài khoản

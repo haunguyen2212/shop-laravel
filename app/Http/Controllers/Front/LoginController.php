@@ -25,7 +25,7 @@ class LoginController extends Controller
             'passwd.max' => 'Mật khẩu không quá 20 kí tự'
         ]);
 
-        if(Auth::attempt(['username' => $request->usrname,'password' => $request->passwd])){
+        if(Auth::attempt(['username' => $request->usrname,'password' => $request->passwd, 'role' => '0'])){
             return redirect()->route('home');
         }
         else{

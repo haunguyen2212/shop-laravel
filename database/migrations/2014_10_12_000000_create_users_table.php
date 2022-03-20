@@ -18,6 +18,7 @@ class CreateUsersTable extends Migration
             $table->string('username',20);
             $table->string('name');
             $table->string('password');
+            $table->char('role',1)->default('0');
             $table->rememberToken();
             $table->string('avatar')->default('avt-default.jfif');
             $table->string('email');
