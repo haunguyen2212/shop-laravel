@@ -9,6 +9,7 @@
         <div class="card card-primary">
             <div class="card-header">
               <h3 class="card-title">Danh mục sản phẩm</h3>
+              <button id="btn-add" class="btn btn-sm btn-primary d-flex justify-content-end"><i class="fas fa-plus"></i></button>
             </div>
             <!-- /.card-header -->
             <div class="card-body">
@@ -29,8 +30,8 @@
                     <td>{{ $category->product_category_id }}</td>
                     <td>{{ $category->product_category_name }}</td>
                     <td>{{ $category->product_category_slug }}</td>
-                    <td class="px-4"><a href=""><i class="fas fa-edit text-warning"></i></a></td>
-                    <td class="px-4"><a href=""><i class="fas fa-times text-danger"></i></a></td>
+                    <td class="px-4"><i data-url="{{ route('category.edit', ['category' => $category->product_category_id]) }}" class="fas fa-edit text-warning edit"></i></td>
+                    <td class="px-4"><i data-url="{{ route('category.destroy', ['category' => $category->product_category_id]) }}" class="fas fa-times text-danger delete"></i></td>
                   </tr>
                   @endforeach
                 
@@ -41,36 +42,48 @@
           </div>
     </div>
 
-    <div class="col-sm-4">
+    <div id="frmControl" class="col-sm-4">
 
-      <button id="btn-add" class="btn btn-sm btn-primary"><i class="fas fa-plus"></i></button>
-
-      <div id="add-cat" class="card card-success" style="display: none">
+      <div id="form-add" class="card card-success" style="display: none">
         <div class="card-header">
           <h3 class="card-title">Thêm danh mục</h3>
         </div>
-        <form action="{{ route('admin.category.add') }}" method="post">
-          @csrf
+        <form id="frm-add" data-url="{{ route('category.store') }}">
           <div class="card-body">
             <div class="form-group">
-              <label for="name">Tên danh mục</label>
-              <input type="text" class="form-control" name="name" id="name" value="{{ old('name') }}">
-              @error('name')
-                <span class="text-danger"><i class="fas fa-exclamation-circle"></i> {{ $message }}</span>
-              @enderror
+              <label for="nameAdd">Tên danh mục</label>
+              <input type="text" class="form-control" name="nameAdd" id="nameAdd" value="">
+              <span class="text-danger error-text error-add-name"></span>
             </div>
             <div class="form-group">
-              <label for="slug">Slug</label>
-              <input type="text" class="form-control" name="slug" id="slug" value="{{ old('slug') }}">
-              @error('slug')
-                <span class="text-danger"><i class="fas fa-exclamation-circle"></i> {{ $message }}</span>
-              @enderror
+              <label for="slugAdd">Slug</label>
+              <input type="text" class="form-control" name="slugAdd" id="slugAdd" value="">
+              <span class="text-danger error-text error-add-slug"></span>
             </div>
             <button type="submit" class="btn btn-sm btn-success mt-2">Thêm</button>
           </div>
-          <!-- /.card-body -->
         </form>
       </div>
+
+      <div id="form-edit" class="card card-warning" style="display: none">
+        <div class="card-header">
+          <h3 class="card-title text-white">Chỉnh sửa danh mục</h3>
+        </div>
+        <form id="frm-edit">
+          <div class="card-body">
+            <div class="form-group">
+              <label for="nameEdit">Tên danh mục</label>
+              <input type="text" class="form-control" name="nameEdit" id="nameEdit" value="">       
+            </div>
+            <div class="form-group">
+              <label for="slugEdit">Slug</label>
+              <input type="text" class="form-control" name="slugEdit" id="slugEdit" value="">
+            </div>
+            <button type="submit" class="btn btn-sm btn-warning mt-2 text-white">Cập nhật</button>
+          </div>
+        </form>
+      </div>
+
     </div>
 </div>
 
@@ -83,13 +96,7 @@
       $('#list-cats').addClass('active');
     });
 
-    $('#btn-add').click(function(){
-      $(this).hide();
-      $('#add-cat').show();
-    });
-
-    $('#name').keyup(function(){
-      var title = $(this).val();
+    function getSlug(title){
       var slug = title.toLowerCase();
       slug = slug.replace(/á|à|ả|ạ|ã|ă|ắ|ằ|ẳ|ẵ|ặ|â|ấ|ầ|ẩ|ẫ|ậ/gi, 'a');
       slug = slug.replace(/é|è|ẻ|ẽ|ẹ|ê|ế|ề|ể|ễ|ệ/gi, 'e');
@@ -111,14 +118,111 @@
       //Xóa các ký tự gạch ngang ở đầu và cuối
       slug = '@' + slug + '@';
       slug = slug.replace(/\@\-|\-\@|\@/gi, '');
-      $('#slug').val(slug);
-    })
+      return slug;
+    }
 
+    var _token = $('meta[name="csrf-token"]').attr('content');
+
+    // Them danh muc
+    $('#btn-add').click(function(){
+      $('#form-edit').hide();
+      $('#form-add').show();
+    });
+
+    $('#nameAdd').keyup(function(){
+      let title = $(this).val();
+      let slug = getSlug(title);
+      $('#slugAdd').val(slug);
+    });
+
+    $('#frm-add').submit(function(e){
+      e.preventDefault();
+      let name =  $('#nameAdd').val();
+      let slug = $('#slugAdd').val();
+      let url = $(this).attr('data-url');
+      $.ajax({
+        type: 'post',
+        url: url,
+        data: {
+          name:name,
+          slug:slug,
+          _token:_token,
+        },
+        beforeSend: function(){
+          $('.error-text').html('');
+        },
+        success: function(respone){
+          //console.log(respone);
+          if(respone.status == 0){
+            $.each(respone.error, function(prefix, val){
+              $('span.error-add-'+prefix).html(val[0]);
+            });
+          }
+          else{
+            window.location.reload();
+          } 
+        }
+      });
+    });
+
+     // Cap nhat danh muc
+     $('#nameEdit').keyup(function(){
+      let title = $(this).val();
+      let slug = getSlug(title);
+      $('#slugEdit').val(slug);
+    });
+
+    $('.edit').click(function(e){
+      e.preventDefault();
+      $('#form-add').hide();
+      $('#form-edit').show();
+      let url = $(this).attr('data-url');
+      $.ajax({
+        type: 'get',
+        url: url,
+        success: function(respone){
+          //console.log(respone);
+          $('#nameEdit').val(respone.data.product_category_name);
+          $('#slugEdit').val(respone.data.product_category_slug);
+          $('#frm-edit').attr('data-url', '{{ asset('admin/category') }}/'+respone.data.product_category_id);
+        }
+      }    
+      );
+    });
+
+    $('#frm-edit').submit(function(e){
+      e.preventDefault();
+      let url = $('#frm-edit').attr('data-url');
+      var name = $('#nameEdit').val();
+      var slug = $('#slugEdit').val();
+      $.ajax({
+        type: 'put',
+        url: url,
+        data: {
+          name:name,
+          slug:slug,
+          _token:_token,
+        },
+        success: function(respone){
+          window.location.reload();
+        }
+      });
+    });
+
+    // Xoa danh muc
+    $('.delete').click(function(e){
+      e.preventDefault();
+      let url = $(this).attr('data-url');
+      if(confirm('Bạn có chắc muốn xóa danh mục này không ?')){
+        $.ajax({
+          type: 'delete',
+          url: url,
+          data: {_token: _token},
+          success: function(respone){
+            window.location.reload();
+          }
+        });
+      }
+    });
   </script>
-  @if ($errors->any())
-      <script>
-        $('#btn-add').hide();
-        $('#add-cat').show();
-      </script>
-  @endif
 @endsection

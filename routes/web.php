@@ -56,8 +56,7 @@ Route::group(['prefix' => 'checkout', 'middleware' => 'auth'], function(){
 
 Route::group(['prefix' => 'admin'], function(){
 	Route::get('/', [Admin\HomeController::class, 'index'])->name('admin.home');
-	Route::get('category', [Admin\CategoryController::class, 'getCategory'])->name('admin.category');
-	Route::post('category', [Admin\CategoryController::class, 'addCategory'])->name('admin.category.add');
+	Route::resource('category', Admin\ProductCategoryController::class)->except(['create', 'show']);
 });
 
 Route::get('/model', function(){

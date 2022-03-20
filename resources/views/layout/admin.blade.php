@@ -27,6 +27,8 @@
   <link rel="stylesheet" href="plugins/summernote/summernote-bs4.css">
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+
+  <meta name="csrf-token" content="{{ csrf_token() }}">
   @yield('style')
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
@@ -142,7 +144,7 @@
             </a>
 			<ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="{{ route('admin.category') }}" id="list-cats" class="nav-link">
+                <a href="{{ route('category.index') }}" id="list-cats" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Xem danh mục</p>
                 </a>
@@ -163,7 +165,7 @@
               @if (isset($categories) && $categories->count() > 0)
                 @foreach ($categories as $category)
                   <li class="nav-item">
-                    <a href="{{ route('admin.category', ['id' => $category->product_category_id ] )}}" class="nav-link">
+                    <a href="" class="nav-link">
                       <i class="far fa-circle nav-icon"></i>
                       <p>{{ $category->product_category_name }}</p>
                     </a>
@@ -312,6 +314,7 @@
 <script src="dist/js/pages/dashboard.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="dist/js/demo.js"></script>
+
 @yield('script')
 </body>
 </html>

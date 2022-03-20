@@ -15,7 +15,7 @@ class CreateOrdersTable extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->string('order_id',40)->primary();
-            $table->integer('customer_id')->unsigned();
+            $table->bigInteger('customer_id')->unsigned();
             $table->string('customer_name');
             $table->string('customer_phone',30);
             $table->string('customer_address');
@@ -26,6 +26,7 @@ class CreateOrdersTable extends Migration
             $table->char('payment_status')->default('0');
             $table->char('order_status',1)->default('0');
             $table->timestamps();
+            $table->foreign('customer_id')->references('uid')->on('users')->onDelete('cascade');
         });
     }
 
