@@ -62,7 +62,7 @@
                 @if(isset($products) && count($products) > 0)
                   @foreach($products as $product)
                     <div class="col-lg-3 col-md-4 col-sm-6 product-item"> 
-                      <a href="{{ route('product.show',['product_slug' => $product->product_slug]) }}">
+                      <a href="{{ route('product.detail',['product_slug' => $product->product_slug]) }}">
                         <div class="product-img">
                           @if($product->product_discount != 0)
                             <div class="tag-sale">Giảm {{number_format($product->product_price*$product->product_discount)}}đ</div>

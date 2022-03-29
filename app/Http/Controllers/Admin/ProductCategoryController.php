@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\ProductCategory;
+use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 
@@ -51,6 +52,7 @@ class ProductCategoryController extends Controller
         }
         else{
             $category = ProductCategory::create(['product_category_name' => $request->name, 'product_category_slug' => $request->slug]);
+            Toastr::success('Thêm danh mục thành công','Thành công');
             return response()->json(['data' => $category, 'status' => 1],200);
         }
         
@@ -89,6 +91,7 @@ class ProductCategoryController extends Controller
     public function update(Request $request, $id)
     {
         $category = ProductCategory::find($id)->update(['product_category_name' => $request->name, 'product_category_slug' => $request->slug]);
+        Toastr::success('Cập nhật danh mục thành công','Thành công');
         return response()->json(['data' => $category, 'status' => 1],200);
     }
 
@@ -102,8 +105,12 @@ class ProductCategoryController extends Controller
     {
         $delete = ProductCategory::find($id)->delete();
         if($delete){
+            Toastr::success('Xóa danh mục thành công', 'Thành công');
             return response()->json(['status' => 1 ], 200);
         }
-        else return response()->json(['status' => 0]);
+        else{
+            Toastr::error('Có lỗi xảy ra. Thử lại sau', 'Thất bại');
+            return response()->json(['status' => 0]);
+        } 
     }
 }

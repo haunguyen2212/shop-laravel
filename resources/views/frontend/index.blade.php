@@ -10,7 +10,7 @@
 
                   @foreach($mainProducts as $mainProduct)
                   <div class="col-lg-3 col-md-4 col-sm-6 product-item">
-                    <a href="{{ route('product.show', ['product_slug' => $mainProduct->product_slug ]) }}">
+                    <a href="{{ route('product.detail', ['product_slug' => $mainProduct->product_slug ]) }}">
 
                       <div class="product-img">
 
@@ -42,7 +42,7 @@
 
                   @foreach($newProducts as $newProduct)
                   <div class="col-lg-3 col-md-4 col-sm-6 product-item">
-                    <a href="{{ route('product.show', ['product_slug' => $newProduct->product_slug ]) }}">
+                    <a href="{{ route('product.detail', ['product_slug' => $newProduct->product_slug ]) }}">
 
                       <div class="product-img">
                         @if($newProduct->product_discount != 0)

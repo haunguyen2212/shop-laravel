@@ -27,7 +27,7 @@ Route::get('category/{category_slug}', [Front\HomeController::class, 'getProduct
 
 Route::get('brand/{brand_slug}', [Front\ProductCategoryController::class, 'getProductsByBrand'])->name('product_brand');
 
-Route::get('detail/{product_slug}', [Front\ProductDetailController::class, 'getProductDetails'])->name('product.show');
+Route::get('detail/{product_slug}', [Front\ProductDetailController::class, 'getProductDetails'])->name('product.detail');
 Route::get('send-comment', [Front\ProductDetailController::class, 'sendComment'])->name('comment.send');
 
 Route::get('search', [Front\HomeController::class, 'getProductsByKey'])->name('search');
@@ -57,6 +57,7 @@ Route::group(['prefix' => 'checkout', 'middleware' => 'auth'], function(){
 Route::group(['prefix' => 'admin'], function(){
 	Route::get('/', [Admin\HomeController::class, 'index'])->name('admin.home');
 	Route::resource('category', Admin\ProductCategoryController::class)->except(['create', 'show']);
+	Route::resource('category_id/{id}/product', Admin\ProductController::class);
 	Route::get('account', [Admin\HomeController::class, 'getAccount'])->name('admin.account');
 });
 
