@@ -18,7 +18,7 @@ class HomeController extends Controller
 
     public function getProductsByKey(Request $request){
         $key = $request->keyword;
-        $products = Product::where('product_name', 'like','%'.$key.'%')->paginate(12);
+        $products = Product::where('product_name', 'like','%'.$key.'%')->take(12)->get();
         return view('frontend.search', compact('products','key'));
     }
 

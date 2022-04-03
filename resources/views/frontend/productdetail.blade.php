@@ -51,7 +51,7 @@
                 <!--Description-->
                 <div class="product-caption">MÔ TẢ SẢN PHẨM</div>
                 <div class="product-description">
-                  <div>{{$product->product_description}}</div>
+                  <div>{!! $product->product_description !!}</div>
                   <div class="descript-caption">Giá: <span class="descript-price">{{number_format($product->product_price-($product->product_price*$product->product_discount))}}</span>
 
                     @if($product->product_discount != 0)

@@ -37,6 +37,6 @@
         
       </div>
     </div>
-    <div id="pagination" class="pagination justify-content-center">{{$products->links()}}</div>
+    {{-- <div id="pagination" class="pagination justify-content-center">{{$products->links()}}</div> --}}
   </div>
 @endsection

@@ -13,7 +13,10 @@
         <div class="card card-primary">
             <div class="card-header">
               <h3 class="card-title">Danh mục sản phẩm</h3>
-              <button id="btn-add" class="btn btn-sm btn-primary d-flex justify-content-end"><i class="fas fa-plus"></i></button>
+              <div class="d-flex flex-row-reverse">
+                <button id="btn-add" class="btn btn-sm btn-primary d-flex"><i class="fas fa-plus"></i></button>
+              </div>
+              
             </div>
             <!-- /.card-header -->
             <div class="card-body">
@@ -47,7 +50,6 @@
     </div>
 
     <div id="frmControl" class="col-sm-4">
-
       <div id="form-add" class="card card-success" style="display: none">
         <div class="card-header">
           <h3 class="card-title">Thêm danh mục</h3>
@@ -68,7 +70,7 @@
           </div>
         </form>
       </div>
-
+  
       <div id="form-edit" class="card card-warning" style="display: none">
         <div class="card-header">
           <h3 class="card-title text-white">Chỉnh sửa danh mục</h3>
@@ -77,18 +79,21 @@
           <div class="card-body">
             <div class="form-group">
               <label for="nameEdit">Tên danh mục</label>
-              <input type="text" class="form-control" name="nameEdit" id="nameEdit" value="">       
+              <input type="text" class="form-control" name="nameEdit" id="nameEdit" value=""> 
+              <span class="text-danger error-text error-edit-name"></span>      
             </div>
             <div class="form-group">
               <label for="slugEdit">Slug</label>
               <input type="text" class="form-control" name="slugEdit" id="slugEdit" value="">
+              <span class="text-danger error-text error-edit-slug"></span>
             </div>
             <button type="submit" class="btn btn-sm btn-warning mt-2 text-white">Cập nhật</button>
           </div>
         </form>
       </div>
-
+  
     </div>
+
 </div>
 
 @endsection
@@ -184,8 +189,18 @@
           slug:slug,
           _token:_token,
         },
+        beforeSend: function(){
+          $('.error-text').html('');
+        },
         success: function(respone){
-          window.location.reload();
+          if(respone.status == 0){
+            $.each(respone.error, function(prefix, val){
+              $('span.error-edit-'+prefix).html(val[0]);
+            });
+          }
+          else{
+            window.location.reload();
+          } 
         }
       });
     });

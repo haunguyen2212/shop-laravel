@@ -22,3 +22,15 @@ function getSlug(title){
     slug = slug.replace(/\@\-|\-\@|\@/gi, '');
     return slug;
     }
+
+function chooseFile(fileInput, id){
+    if(fileInput.files && fileInput.files[0]){
+        var reader = new FileReader();
+
+        reader.onload = function(e){
+            $('#'+id).attr('src', e.target.result);
+            $('#'+id).show();
+        }
+        reader.readAsDataURL(fileInput.files[0]);
+    }
+}

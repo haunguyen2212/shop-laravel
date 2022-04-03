@@ -57,11 +57,19 @@ Route::group(['prefix' => 'checkout', 'middleware' => 'auth'], function(){
 Route::group(['prefix' => 'admin'], function(){
 	Route::get('/', [Admin\HomeController::class, 'index'])->name('admin.home');
 	Route::resource('category', Admin\ProductCategoryController::class)->except(['create', 'show']);
-	Route::resource('category_id/{id}/product', Admin\ProductController::class);
+	Route::resource('category_id/{id}/product', Admin\ProductController::class)->except(['update']);
+	Route::post('product/update/{id}', [Admin\ProductController::class, 'updateProductInfo'])->name('product.update.info');
+	Route::get('productdetail/show/{id}', [Admin\ProductDetailController::class, 'index'])->name('detail.index');
+	Route::post('productdetail/store/{product_id}/color', [Admin\ProductDetailController::class, 'storeColor'])->name('detail.color.store');
+	Route::get('productdetail/edit/{id}/color', [Admin\ProductDetailController::class, 'editColor'])->name('detail.color.edit');
+	Route::post('productdetail/update/{id}/color', [Admin\ProductDetailController::class, 'updateColor'])->name('detail.color.update');
+	Route::delete('productdetail/destroy/{id}/color', [Admin\ProductDetailController::class, 'destroyColor'])->name('detail.color.destroy');
+	Route::get('productdetail/edit/{id}/specification', [Admin\ProductDetailController::class, 'editSpec'])->name('detail.spec.edit');
+	Route::post('productdetail/update/{id}/specification', [Admin\ProductDetailController::class, 'updateSpec'])->name('detail.spec.update');
 	Route::get('account', [Admin\HomeController::class, 'getAccount'])->name('admin.account');
 });
 
 Route::get('/model', function(){
-	return \App\Models\Comment::find(3)->user;
+	return \App\Models\Product::find(1)->brand;
 });
 
