@@ -35,9 +35,5 @@ class AppServiceProvider extends ServiceProvider
         Paginator::useBootstrap();
         $categories = ProductCategory::all();
         View::share('categories',$categories);
-        $num_product = Product::all()->count();
-        View::share('num_product', $num_product);
-        $num_order = Order::all()->count();
-        View::share('num_order', $num_order);
     }
 }

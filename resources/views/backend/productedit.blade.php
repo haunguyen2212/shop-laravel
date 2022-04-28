@@ -31,7 +31,7 @@
               <div class="col-sm-4">
                 <div class="form-group">
                   <label for="brandEdit">Nhãn hiệu:</label>
-                  <select id="brandEdit" name="brandEdit" class="form-control">
+                  <select id="brandEdit" name="brandEdit" class="custom-select mr-sm-2">
                     <option selected>Chưa chọn nhãn</option>
                   </select>
                   <span class="text-danger error-text error-brandEdit"></span>

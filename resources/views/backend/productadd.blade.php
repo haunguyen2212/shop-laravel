@@ -30,7 +30,7 @@
               <div class="col-sm-4">
                 <div class="form-group">
                   <label for="brandAdd">Nhãn hiệu:</label>
-                  <select id="brandAdd" name="brandAdd" class="form-control">
+                  <select id="brandAdd" name="brandAdd" class="custom-select mr-sm-2">
                     <option selected>Chưa chọn nhãn</option>
                   </select>
                   <span class="text-danger error-text error-brandAdd"></span>

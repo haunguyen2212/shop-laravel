@@ -4543,6 +4543,93 @@ class DatabaseSeeder extends Seeder
         	],
         ]);
 
+        DB::table('statistical')->insert([
+        	[
+                'order_date' => '2022-04-19',
+        		'sales' => 40000000,
+                'quantity' => 10,
+        		'total_order' => 8,
+        	],
+            [
+                'order_date' => '2022-04-18',
+        		'sales' => 75000000,
+                'quantity' => 15,
+        		'total_order' => 14,
+        	],
+            [
+                'order_date' => '2022-04-17',
+        		'sales' => 52000000,
+                'quantity' => 12,
+        		'total_order' => 10,
+        	],
+            [
+                'order_date' => '2022-04-16',
+        		'sales' => 116500000,
+                'quantity' => 18,
+        		'total_order' => 15,
+        	],
+            [
+                'order_date' => '2022-04-15',
+        		'sales' => 134520000,
+                'quantity' => 23,
+        		'total_order' => 20,
+        	],
+            [
+                'order_date' => '2022-04-14',
+        		'sales' => 88500000,
+                'quantity' => 14,
+        		'total_order' => 14,
+        	],
+            [
+                'order_date' => '2022-04-13',
+        		'sales' => 50000000,
+                'quantity' => 12,
+        		'total_order' => 10,
+        	],
+            [
+                'order_date' => '2022-04-12',
+        		'sales' => 80000000,
+                'quantity' => 16,
+        		'total_order' => 14,
+        	],
+            [
+                'order_date' => '2022-04-11',
+        		'sales' => 60000000,
+                'quantity' => 12,
+        		'total_order' => 10,
+        	],
+            [
+                'order_date' => '2022-04-10',
+        		'sales' => 70000000,
+                'quantity' => 15,
+        		'total_order' => 14,
+        	],
+            [
+                'order_date' => '2022-04-09',
+        		'sales' => 90000000,
+                'quantity' => 18,
+        		'total_order' => 15,
+        	],
+            [
+                'order_date' => '2022-04-09',
+        		'sales' => 76000000,
+                'quantity' => 15,
+        		'total_order' => 15,
+        	],
+            [
+                'order_date' => '2022-04-08',
+        		'sales' => 162000000,
+                'quantity' => 8,
+        		'total_order' => 8,
+        	],
+            [
+                'order_date' => '2022-04-07',
+        		'sales' => 125000000,
+                'quantity' => 12,
+        		'total_order' => 12,
+        	],
+        ]);
+
         DB::table('provinces')->insert([
         	[
         		'id' => 1,

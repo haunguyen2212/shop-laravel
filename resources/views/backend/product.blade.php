@@ -294,5 +294,6 @@
   <script>
     CKEDITOR.replace('descriptionAdd');
     CKEDITOR.replace('descriptionEdit');
+    
   </script>
 @endsection

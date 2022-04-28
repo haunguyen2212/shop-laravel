@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Product;
 use App\Models\ProductDetail;
+use App\Models\ProductSpecification;
+use App\Models\SpecificationType;
 use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -112,6 +114,113 @@ class ProductDetailController extends Controller
         }
         else{
             Toastr::error('Có lỗi xảy ra. Thử lại sau', 'Thất bại');
+            return response()->json(['status' => 0]);
+        }
+    }
+
+    public function createSpec($id){
+        $spec = ProductSpecification::where('product_id', $id)->get();
+        $arr = [];
+        foreach ($spec as $key => $value) {
+            $arr[$key] = $value->type_id;
+        }
+        $data = SpecificationType::whereNotIn('type_id', $arr)->get();
+        return response()->json(['data' => $data, 'status' => 1], 200);
+    }
+
+    public function storeSpec($id, Request $request){
+        $validator = Validator::make($request->all(), [
+            'contentSpecAdd' => 'required',
+        ],[
+            'contentSpecAdd.required' => '<i class="fas fa-exclamation-circle"></i> Nội dung không được bỏ trống',
+        ]);
+        if($validator->fails()){
+            return response()->json(['error' => $validator->errors()->toArray(), 'status' => 0]);
+        }
+        $store = ProductSpecification::create([
+            'product_id' => $id,
+            'type_id' => $request->nameSpecAdd,
+            'specification' => $request->contentSpecAdd,
+        ]);
+        if($store){
+            Toastr::success('Thêm thành công', 'Thành công');
+            return response()->json(['status' => 1], 200);
+        }
+        else{
+            Toastr::error('Có lỗi xảy ra, thử lại sau', 'Thất bại');
+            return response()->json(['status' => 0]);
+        }
+    }
+
+    public function editSpec($product_id, $type_id){
+        $spec = ProductSpecification::where('product_id', $product_id)->get();
+        $type_edit = ProductSpecification::where('product_id', $product_id)->where('type_id', $type_id)->first()->type_id;
+        $arr = [];
+        foreach ($spec as $value) {
+            if($value->type_id != $type_edit){
+                $arr[] = $value->type_id;
+            }    
+        }
+        $data = [];
+        $data['allSpec'] = SpecificationType::whereNotIn('type_id', $arr)->get();
+        $data['spec'] = ProductSpecification::where('product_id', $product_id)->where('type_id', $type_id)->first();
+        return response()->json(['data' => $data, 'status' => 1], 200);
+    }
+
+    public function updateSpec($product_id, $type_id, Request $request){
+        $validator = Validator::make($request->all(),[
+            'contentSpecEdit' => 'required',
+        ],[
+            'contentSpecEdit.required' => '<i class="fas fa-exclamation-circle"></i> Nội dung không được bỏ trống',
+        ]);
+        if($validator->fails()){
+            return response()->json(['error' => $validator->errors()->toArray(), 'status' => 0]);
+        }
+        $update = ProductSpecification::where('product_id', $product_id)->where('type_id', $type_id)->update([
+            'type_id' => $request->nameSpecEdit,
+            'specification' => $request->contentSpecEdit,
+        ]);
+        if($update){
+            Toastr::success('Cập nhật thành công', 'Thành công');
+            return response()->json(['status' => 1], 200);
+        }
+        else{
+            Toastr::error('Có lỗi xảy ra, thử lại sau', 'Thất bại');
+            return response()->json(['status' => 0]);
+        }
+    }
+
+    public function destroySpec($product_id, $type_id){
+        $delete = ProductSpecification::where('product_id', $product_id)->where('type_id',$type_id)->delete();
+        if($delete){
+            Toastr::success('Xóa thành công', 'Thành công');
+            return response()->json(['status' => 1], 200);
+        }
+        else{
+            Toastr::error('Có lỗi xảy ra, thử lại sau', 'Thất bại');
+            return response()->json(['status' => 0]);
+        }
+    }
+
+    public function storeNewSpec(Request $request){
+        $validator = Validator::make($request->all(),[
+            'newSpec' => 'required|unique:specification_types,type_name',
+        ],[
+            'newSpec.required' => '<i class="fas fa-exclamation-circle"></i> Tên không được bỏ trống',
+            'newSpec.unique' => '<i class="fas fa-exclamation-circle"></i> Tên thông số đã tồn tại',
+        ]);
+        if($validator->fails()){
+            return response()->json(['error' => $validator->errors()->toArray(), 'status' => 0]);
+        }
+        $store = SpecificationType::create([
+            'type_name' => $request->newSpec,
+        ]);
+        if($store){
+            Toastr::success('Thêm mới thành công', 'Thành công');
+            return response()->json(['status' => 1], 200);
+        }
+        else{
+            Toastr::error('Có lỗi xảy ra, thử lại sau', 'Thất bại');
             return response()->json(['status' => 0]);
         }
     }

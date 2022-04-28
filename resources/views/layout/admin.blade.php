@@ -28,6 +28,8 @@
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css">
+
   <meta name="csrf-token" content="{{ csrf_token() }}">
   @yield('style')
 </head>
@@ -42,10 +44,13 @@
           <a class="nav-link" data-widget="pushmenu" href="#"><i class="fas fa-bars"></i></a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
-          <a href="index3.html" class="nav-link">Trang chủ</a>
+          <a href="{{ route('admin.home') }}" class="nav-link">Trang chủ</a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
-          <a href="#" class="nav-link">Liên hệ</a>
+          <a href="javascript:void(0)" class="nav-link">Liên hệ</a>
+        </li>
+        <li class="nav-item d-none d-sm-inline-block">
+          <a href="{{ route('admin.logout') }}" class="nav-link">Đăng xuất</a>
         </li>
       </ul>
 
@@ -65,32 +70,6 @@
       <ul class="navbar-nav ml-auto">
         
         <!-- Notifications Dropdown Menu -->
-        <li class="nav-item dropdown">
-          <a class="nav-link" data-toggle="dropdown" href="#">
-            <i class="far fa-bell"></i>
-            <span class="badge badge-warning navbar-badge">15</span>
-          </a>
-          <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-            <span class="dropdown-item dropdown-header">15 Notifications</span>
-            <div class="dropdown-divider"></div>
-            <a href="#" class="dropdown-item">
-              <i class="fas fa-envelope mr-2"></i> 4 new messages
-              <span class="float-right text-muted text-sm">3 mins</span>
-            </a>
-            <div class="dropdown-divider"></div>
-            <a href="#" class="dropdown-item">
-              <i class="fas fa-users mr-2"></i> 8 friend requests
-              <span class="float-right text-muted text-sm">12 hours</span>
-            </a>
-            <div class="dropdown-divider"></div>
-            <a href="#" class="dropdown-item">
-              <i class="fas fa-file mr-2"></i> 3 new reports
-              <span class="float-right text-muted text-sm">2 days</span>
-            </a>
-            <div class="dropdown-divider"></div>
-            <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
-          </div>
-        </li>
         <li class="nav-item">
           <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#">
             <i class="fas fa-th-large"></i>
@@ -114,10 +93,10 @@
         <!-- Sidebar user panel (optional) -->
         <div class="user-panel mt-3 pb-3 mb-3 d-flex">
           <div class="image">
-            <img src="dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+            <img src="../frontend/img/avatar/{{ Auth::user()->avatar }}" class="img-circle elevation-2" alt="User Image">
           </div>
           <div class="info">
-            <a href="#" class="d-block">Alexander Pierce</a>
+            <a href="javascript:void(0)" class="d-block">{{ Auth::user()->name }}</a>
           </div>
         </div>
 
@@ -127,7 +106,7 @@
           <!-- Add icons to the links using the .nav-icon class
            with font-awesome or any other icon font library -->
            <li class="nav-item has-treeview">
-            <a href="#" id="home" class="nav-link">
+            <a href="{{ route('admin.home') }}" id="home" class="nav-link">
               <i class="nav-icon fas fa-home"></i>
               <p>
                 Trang chủ
@@ -150,6 +129,14 @@
                 </a>
               </li>   
             </ul>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{{ route('brand.index') }}" id="list-brands" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Xem nhãn hiệu</p>
+                </a>
+              </li>   
+            </ul>
           </li>
           <li id="product" class="nav-item has-treeview">
             <a href="#" class="nav-link">
@@ -157,7 +144,6 @@
               <p>
                 Sản phẩm
                 <i class="fas fa-angle-left right"></i>
-                <span class="badge badge-info right">{{ $num_product }}</span>
               </p>
             </a>
             <ul class="nav nav-treeview">
@@ -182,7 +168,6 @@
               <p>
                 Đơn hàng
                 <i class="fas fa-angle-left right"></i>
-                <span class="badge badge-info right">{{ $num_order }}</span>
               </p>
             </a>
             <ul class="nav nav-treeview">
@@ -282,10 +267,11 @@
 
 <!-- jQuery -->
 <script type="text/javascript" src="../frontend/js/popper.min.js"></script>
-<script type="text/javascript" src="../frontend/js/jquery-3.6.0.min.js"></script>
+{{-- <script type="text/javascript" src="../frontend/js/jquery-3.6.0.min.js"></script> --}}
+<script type="text/javascript" src="js/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.min.js" integrity="sha384-VHvPCCyXqtD5DqJeNxl2dtTyhF78xXNXdkwX1CZeRusQfRKp+tA7hAShOK/B/fQ2" crossorigin="anonymous"></script>
 <!-- jQuery UI 1.11.4 -->
-<script src="plugins/jquery-ui/jquery-ui.min.js"></script>
+<script src="js/jquery-ui.min.js"></script>
 <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
 <script>
   $.widget.bridge('uibutton', $.ui.button)
@@ -297,8 +283,8 @@
 <!-- Sparkline -->
 <script src="js/sparkline.js"></script>
 <!-- JQVMap -->
-<script src="js/jquery.vmap.min.js"></script>
-<script src="js/jquery.vmap.usa.js"></script>
+{{-- <script src="js/jquery.vmap.min.js"></script> --}}
+{{-- <script src="js/jquery.vmap.usa.js"></script> --}}
 <!-- jQuery Knob Chart -->
 <script src="js/jquery.knob.min.js"></script>
 <!-- daterangepicker -->
@@ -313,7 +299,7 @@
 <!-- AdminLTE App -->
 <script src="dist/js/adminlte.js"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-<script src="dist/js/pages/dashboard.js"></script>
+{{-- <script src="dist/js/pages/dashboard.js"></script> --}}
 <!-- AdminLTE for demo purposes -->
 <script src="dist/js/demo.js"></script>
 <script src="ckeditor/ckeditor.js"></script>

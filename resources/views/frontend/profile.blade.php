@@ -31,32 +31,46 @@
       <div class="col-md-12" id="history">
         <div class="product-caption">Lịch sử đặt hàng</div>
         
-        @foreach ($orders as $order)
-            <div class="order mb-4">
-                <div class="order-info">
-                <div>Mã đơn hàng: <span>{{ $order->order_id }}</span></div>
-                <div>Ngày đặt hàng: <span>{{ date("d/m/Y H:i:s", strtotime($order->order_date)) }}</span></div>
-                <div>Ngày giao hàng (dự kiến): <span>{{ date("d/m/Y H:i:s", strtotime($order->delivery_date)) }}</span></div>
-                <div>Tổng thanh toán: <span class="fw-bold text-danger">{{ number_format($order->total) }}đ</span></div>
-                <div>Hình thức thanh toán: <span>{{ $order->payment_type }}</span></div>
-                
+        <table class="table table-hover table-striped">
+          <thead>
+            <tr>
+              <th width="5%">STT</th>
+              <th width="15%">Mã đơn hàng</th>
+              <th width="10%">Ngày đặt</th>
+              <th width="10%">Tổng tiền</th>
+              <th width="20%">Trạng thái</th>
+              <th width="20%">Tình trạng</th>
+              <th width="20%">Tùy chọn</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            @foreach ($orders as $key => $order)
+            <tr>
+              <td>{{ ++$key }}</td>
+              <td>{{ $order->order_id }}</td>
+              <td>{{ date("d/m/Y H:i:s", strtotime($order->order_date)) }}</td>
+              <td><span class="fw-bold text-danger">{{ number_format($order->total) }}đ</span></td>
+              <td>
                 @if ($order->payment_status == 0)
-                  <div>Trạng thái thanh toán: <span class="text-danger">Chưa thanh toán</span></div>
+                  <span class="text-danger">Chưa thanh toán</span>
                 @else
-                  <div>Trạng thái thanh toán: <span class="text-primary">Đã thanh toán</span></div>
+                  <span class="text-primary">Đã thanh toán</span>
                 @endif
-
+              </td>
+              <td>
                 @if ($order->order_status == 0)
-                  <div>Tình trạng: <span class="text-danger">Chưa nhận hàng</span></div>
+                  <span class="text-danger">Chưa nhận hàng</span>
                 @else
-                  <div>Tình trạng: <span class="text-primary">Đã nhận hàng</span></div>
+                  <span class="text-primary">Đã nhận hàng</span>
                 @endif
-
-                <div><a href="{{ route('orderDetail',['id' => $order->order_id]) }}" class="text-primary">Xem chi tiết</a></div>
-                </div> 
-            </div>
-            <hr>
-        @endforeach
+              </td>
+              <td><a href="{{ route('orderDetail',['id' => $order->order_id]) }}" class="text-success">Xem chi tiết</a></td>
+            </tr>
+            @endforeach
+            
+          </tbody>
+        </table>
 
       </div>
     </div>

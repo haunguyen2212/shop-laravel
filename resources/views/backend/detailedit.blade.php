@@ -1,4 +1,4 @@
-<!-- Modal -->
+<!-- Modal Edit Color-->
 <div class="modal fade" id="editColor" tabindex="-1" aria-labelledby="editColorLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
@@ -46,7 +46,52 @@
             <button type="submit" class="btn btn-sm btn-warning">Thay đổi</button>
           </div>
     </form>
-        
       </div>
     </div>
   </div>
+
+  <!-- Modal Edit Specification-->
+<div class="modal fade" id="editSpec" tabindex="-1" aria-labelledby="editSpecLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title text-info" id="editSpecLabel">CHỈNH SỬA THÔNG SỐ</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+      <form id="frmEditSpec" method="POST" enctype="multipart/form-data"> 
+      <div class="modal-body">       
+        <div class="card-body">
+            <div class="row">
+              @csrf
+              <div class="col-sm-6">
+                <div class="form-group">
+                  <label for="nameSpecEdit">Tên thông số:</label>
+                  <select id="nameSpecEdit" name="nameSpecEdit" class="custom-select mr-sm-2">
+                    <option selected>Chưa chọn thông số</option>
+                  </select>
+                  <span class="text-danger error-text error-nameSpecEdit"></span>
+                </div>
+              </div>
+              <div class="col-sm-12">
+                <div class="form-group">
+                  <label for="contentSpecEdit">Nội dung:</label>
+                  <input type="text" class="form-control" id="contentSpecEdit" name="contentSpecEdit">
+                  <span class="text-danger error-text error-contentSpecEdit"></span>
+                </div>
+              </div>
+              
+            </div>
+        </div>  
+      </div>
+      <div class="modal-footer">
+          <button type="button" class="btn btn-sm btn-info" data-dismiss="modal">Đóng</button>
+          <button type="submit" class="btn btn-sm btn-warning">Thay đổi</button>
+        </div>
+  </form>
+      
+    </div>
+  </div>
+</div>

@@ -53,7 +53,12 @@
     <div class="col-sm-6">
       <div class="card">
         <div class="card-header">
-          <h3 class="card-title text-danger font-weight-bold">Thông số</h3>    
+          <h3 class="card-title text-danger font-weight-bold">Thông số</h3>
+          <div class="d-flex flex-row-reverse">
+            <button type="button" id="add-spec" class="btn btn-sm btn-white text-danger d-flex" data-url="{{ route('detail.spec.create', ['product_id' => $product->product_id]) }}" data-toggle="modal" data-target="#addSpec">
+              <i class="fas fa-plus"></i>
+            </button>
+          </div> 
         </div>
         <!-- /.card-header -->
         <div class="card-body table-responsive p-0">
@@ -74,8 +79,8 @@
                     <td>{{ $spec->specification }}</td>
                     <td>
                         <div>
-                          <button type="button" class="btn btn-sm btn-info edit-spec" data-toggle="modal" >Sửa</button>
-                          <button class="btn btn-sm btn-danger delete-spec">Xóa</button>
+                          <button type="button" class="btn btn-sm btn-info edit-spec" data-url="{{ route('detail.spec.edit', ['product_id' => $product->product_id, 'type_id' => $spec->type_id]) }}" data-update="{{ route('detail.spec.update', ['product_id' => $product->product_id,'type_id' => $spec->type_id]) }}" data-toggle="modal" data-target="#editSpec">Sửa</button>
+                          <button class="btn btn-sm btn-danger delete-spec" data-url="{{ route('detail.spec.destroy', ['product_id' => $product->product_id,'type_id' => $spec->type_id]) }}">Xóa</button>
                         </div>
                     </td>
                   </tr>
@@ -97,8 +102,12 @@
 
   <script>
       $(document).ready(function(){
-      $('#product').addClass('menu-open');
-      $('#list-'+{{ $product->product_category_id }}).addClass('active');
+        $('#product').addClass('menu-open');
+        $('#list-'+{{ $product->product_category_id }}).addClass('active');
+        $('#add-new-spec').click(function(e){
+          e.preventDefault();
+          $('.new').toggle();
+        });
     });
 
     var _token = $('meta[name="csrf-token"]').attr('content');
@@ -207,6 +216,161 @@
         });
       }
     });
+
+    //Them thong so
+    $('#add-spec').click(function(e){
+      e.preventDefault();
+      let url = $(this).attr('data-url');
+      $.ajax({
+        type: 'get',
+        url: url,
+        data: {
+          _token:_token,
+        },
+        success: function(respone){
+          if(respone.status == 1){
+            //console.log(respone);
+            var str = '';
+              $.each(respone.data, function(prefix, val){
+                str += '<option value="'+val.type_id+'">'+val.type_name+'</option>';
+              });
+              $('#nameSpecAdd').html(str);
+              $('#frmAddSpec').attr('data-url','{{ route('detail.spec.store', ['product_id' => $product->product_id]) }}');
+          }
+        }
+      });
+    });
+
+    $('#frmAddSpec').submit(function(e){
+      e.preventDefault();
+     let url = $(this).attr('data-url');
+     let type_id = $('#nameSpecAdd').val();
+     let specification = $('#contentSpecAdd').val();
+     $.ajax({
+       type: 'post',
+       url: url,
+       data: {
+        nameSpecAdd: type_id,
+        contentSpecAdd: specification,
+        _token: _token,
+       },
+       success: function(respone){
+         if(respone.status == 1){
+          //console.log(respone);
+          window.location.reload();
+         }
+         else{
+            $.each(respone.error, function(prefix, val){
+              $('span.error-'+prefix).html(val[0]);
+            });
+         }  
+       }
+     })
+    });
+
+    // Sua thong so 
+    $('.edit-spec').click(function(e){
+      e.preventDefault();
+      let url = $(this).attr('data-url');
+      let urlUpdate = $(this).attr('data-update');
+      $.ajax({
+        type: 'get',
+        url: url,
+        data:{
+          _token:_token,
+        },
+        success: function(respone){
+          if(respone.status == 1){
+            console.log(respone);
+            var str = '';
+              $.each(respone.data.allSpec, function(prefix, val){
+                str += '<option value="'+val.type_id+'">'+val.type_name+'</option>';
+              });
+              $('#nameSpecEdit').html(str);
+              $('#nameSpecEdit option[value='+respone.data.spec.type_id+']').attr('selected','selected');
+              $('#contentSpecEdit').val(respone.data.spec.specification);
+              $('#frmEditSpec').attr('data-url', urlUpdate);
+          }
+        }
+      });
+    });
+
+    $('#frmEditSpec').submit(function(e){
+      e.preventDefault();
+      let url = $(this).attr('data-url');
+      let name = $('#nameSpecEdit').val();
+      let content = $('#contentSpecEdit').val();
+      console.log(name+content);
+      $.ajax({
+        type: 'post',
+        url: url,
+        data: {
+          nameSpecEdit: name,
+          contentSpecEdit: content,
+          _token: _token,
+        },
+        success: function(respone){
+          if(respone.status == 1){
+            //console.log(respone);
+            window.location.reload();
+          }
+          else{
+            $.each(respone.error, function(prefix, val){
+              $('span.error-'+prefix).html(val[0]);
+            });
+          }
+        }
+      })
+    });
+
+    // Xoa thong so
+    $('.delete-spec').click(function(e){
+      e.preventDefault();
+      let url = $(this).attr('data-url');
+      if(confirm('Bạn có chắc muốn xóa thông số này không?')){
+        $.ajax({
+          type: 'delete',
+          url: url,
+          data: {
+            _token: _token,
+          },
+          success: function(respone){
+            if(respone.status == 1){
+              //console.log(respone);
+              window.location.reload();
+            }
+            
+          }
+        })
+      }  
+    });
+
+    // Them ten thong so moi
+    $('#btn-new-spec').click(function(e){
+      e.preventDefault();
+      let url = $(this).attr('data-url');
+      let newSpec = $('#newSpec').val();
+      $.ajax({
+        type: 'post',
+        url: url,
+        data: {
+          newSpec: newSpec,
+          _token: _token,
+        },
+        success: function(respone){
+          if(respone.status == 1){
+            //console.log(respone);
+            window.location.reload();
+          }
+          else{
+            $.each(respone.error, function(prefix, val){
+              $('span.error-'+prefix).html(val[0]);
+            });
+          }
+        }
+      });
+    });
+
 
   </script>
 @endsection

@@ -54,22 +54,37 @@ Route::group(['prefix' => 'checkout', 'middleware' => 'auth'], function(){
 	Route::get('order/cancel/{id}',[Front\CheckoutController::class, 'cancelOrder'])->name('order.cancel');
 });
 
-Route::group(['prefix' => 'admin'], function(){
+Route::get('login/admin', [Admin\LoginController::class, 'getLogin'])->name('admin.login');
+Route::post('login/admin', [Admin\LoginController::class, 'postLogin'])->name('admin.login.post');
+Route::get('logout/admin', [Admin\LoginController::class, 'logout'])->name('admin.logout');
+
+Route::group(['prefix' => 'admin', 'middleware' => 'CheckAdminLogin'], function(){
 	Route::get('/', [Admin\HomeController::class, 'index'])->name('admin.home');
+	Route::post('filter', [Admin\HomeController::class, 'filterByDate'])->name('admin.filter.order');
+	Route::post('filter_default', [Admin\HomeController::class, 'filterDefault'])->name('admin.filter.default');
+	Route::get('category_statistic', [Admin\HomeController::class, 'categoryStatistic'])->name('admin.category.statistic');
+	
 	Route::resource('category', Admin\ProductCategoryController::class)->except(['create', 'show']);
+	Route::resource('brand', Admin\BrandController::class)->except(['show']);
 	Route::resource('category_id/{id}/product', Admin\ProductController::class)->except(['update']);
 	Route::post('product/update/{id}', [Admin\ProductController::class, 'updateProductInfo'])->name('product.update.info');
-	Route::get('productdetail/show/{id}', [Admin\ProductDetailController::class, 'index'])->name('detail.index');
-	Route::post('productdetail/store/{product_id}/color', [Admin\ProductDetailController::class, 'storeColor'])->name('detail.color.store');
-	Route::get('productdetail/edit/{id}/color', [Admin\ProductDetailController::class, 'editColor'])->name('detail.color.edit');
-	Route::post('productdetail/update/{id}/color', [Admin\ProductDetailController::class, 'updateColor'])->name('detail.color.update');
-	Route::delete('productdetail/destroy/{id}/color', [Admin\ProductDetailController::class, 'destroyColor'])->name('detail.color.destroy');
-	Route::get('productdetail/edit/{id}/specification', [Admin\ProductDetailController::class, 'editSpec'])->name('detail.spec.edit');
-	Route::post('productdetail/update/{id}/specification', [Admin\ProductDetailController::class, 'updateSpec'])->name('detail.spec.update');
+	Route::get('product_detail/show/{id}', [Admin\ProductDetailController::class, 'index'])->name('detail.index');
+	Route::post('product_detail/store/{product_id}/color', [Admin\ProductDetailController::class, 'storeColor'])->name('detail.color.store');
+	Route::get('product_detail/edit/{id}/color', [Admin\ProductDetailController::class, 'editColor'])->name('detail.color.edit');
+	Route::post('product_detail/update/{id}/color', [Admin\ProductDetailController::class, 'updateColor'])->name('detail.color.update');
+	Route::delete('product_detail/destroy/{id}/color', [Admin\ProductDetailController::class, 'destroyColor'])->name('detail.color.destroy');
+
+	Route::post('product_detail/store_new_spec/new_specification', [Admin\ProductDetailController::class, 'storeNewSpec'])->name('detail.newspec.store');
+	Route::get('product_detail/create/{product_id}/specification', [Admin\ProductDetailController::class, 'createSpec'])->name('detail.spec.create');
+	Route::post('product_detail/store/{product_id}/specification', [Admin\ProductDetailController::class, 'storeSpec'])->name('detail.spec.store');
+	Route::get('product_detail/edit/{product_id}/specification/type/{type_id}', [Admin\ProductDetailController::class, 'editSpec'])->name('detail.spec.edit');
+	Route::post('product_detail/update/{product_id}/specification/type/{type_id}', [Admin\ProductDetailController::class, 'updateSpec'])->name('detail.spec.update');
+	Route::delete('product_detail/destroy/{product_id}/specification/type/{type_id}', [Admin\ProductDetailController::class, 'destroySpec'])->name('detail.spec.destroy');
+
 	Route::get('account', [Admin\HomeController::class, 'getAccount'])->name('admin.account');
 });
 
 Route::get('/model', function(){
-	return \App\Models\Product::find(1)->brand;
+	return \App\Models\Statistic::find(1);
 });
 

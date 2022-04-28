@@ -1,6 +1,6 @@
 @extends('layout.admin')
 
-@section('title', 'Trang chủ')
+@section('title', 'Danh mục sản phẩm')
 
 @section('style')
   <link rel="stylesheet" href="../frontend/css/toastr.min.css">
@@ -37,8 +37,8 @@
                     <td>{{ $category->product_category_id }}</td>
                     <td>{{ $category->product_category_name }}</td>
                     <td>{{ $category->product_category_slug }}</td>
-                    <td class="px-4"><i data-url="{{ route('category.edit', ['category' => $category->product_category_id]) }}" class="fas fa-edit text-warning edit"></i></td>
-                    <td class="px-4"><i data-url="{{ route('category.destroy', ['category' => $category->product_category_id]) }}" class="fas fa-times text-danger delete"></i></td>
+                    <td class="px-4"><i data-url="{{ route('category.edit', ['category' => $category->product_category_id]) }}" class="fas fa-edit text-warning edit" style="cursor: pointer"></i></td>
+                    <td class="px-4"><i data-url="{{ route('category.destroy', ['category' => $category->product_category_id]) }}" class="fas fa-times text-danger delete" style="cursor: pointer"></i></td>
                   </tr>
                   @endforeach
                 
