@@ -68,6 +68,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'CheckAdminLogin'], function(
 	Route::resource('brand', Admin\BrandController::class)->except(['show']);
 	Route::resource('category_id/{id}/product', Admin\ProductController::class)->except(['update']);
 	Route::post('product/update/{id}', [Admin\ProductController::class, 'updateProductInfo'])->name('product.update.info');
+
 	Route::get('product_detail/show/{id}', [Admin\ProductDetailController::class, 'index'])->name('detail.index');
 	Route::post('product_detail/store/{product_id}/color', [Admin\ProductDetailController::class, 'storeColor'])->name('detail.color.store');
 	Route::get('product_detail/edit/{id}/color', [Admin\ProductDetailController::class, 'editColor'])->name('detail.color.edit');
@@ -81,10 +82,11 @@ Route::group(['prefix' => 'admin', 'middleware' => 'CheckAdminLogin'], function(
 	Route::post('product_detail/update/{product_id}/specification/type/{type_id}', [Admin\ProductDetailController::class, 'updateSpec'])->name('detail.spec.update');
 	Route::delete('product_detail/destroy/{product_id}/specification/type/{type_id}', [Admin\ProductDetailController::class, 'destroySpec'])->name('detail.spec.destroy');
 
+	Route::get('order', [Admin\OrderController::class, 'index'])->name('order.index');
+	Route::get('order/detail', [Admin\OrderController::class, 'getDetails'])->name('order.detail');
+	Route::post('order/browsing', [Admin\OrderController::class, 'browsing'])->name('order.browsing');
+
 	Route::get('account', [Admin\HomeController::class, 'getAccount'])->name('admin.account');
 });
 
-Route::get('/model', function(){
-	return \App\Models\Statistic::find(1);
-});
 

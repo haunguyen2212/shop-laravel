@@ -161,51 +161,16 @@
               
             </ul>
           </li>
-          
+
           <li class="nav-item has-treeview">
-            <a href="#" id="order" class="nav-link">
+            <a href="{{ route('order.index') }}" id="order" class="nav-link">
               <i class="nav-icon fas fa-file"></i>
               <p>
                 Đơn hàng
-                <i class="fas fa-angle-left right"></i>
               </p>
             </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="pages/UI/sliders.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Chưa duyệt</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="pages/UI/modals.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Đã thanh toán</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="pages/UI/navbar.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Đã nhận hàng</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="pages/UI/timeline.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Đã hủy</p>
-                </a>
-              </li>
-            </ul>
           </li>
           
-          <li class="nav-item has-treeview">
-            <a href="#" id="comment" class="nav-link">
-              <i class="nav-icon fas fa-comment-alt"></i>
-              <p>
-                Bình luận
-              </p>
-            </a>
-          </li>
           <li class="nav-item has-treeview">
             <a href="{{ route('admin.account') }}" id="account" class="nav-link">
               <i class="nav-icon fas fa-users"></i>

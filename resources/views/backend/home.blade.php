@@ -30,14 +30,14 @@
       <!-- small box -->
       <div class="small-box bg-success">
         <div class="inner">
-          <h3>53<sup style="font-size: 20px">%</sup></h3>
+          <h3>{{ $data['order'] }}</h3>
 
           <p>Đơn hàng</p>
         </div>
         <div class="icon">
           <i class="ion ion-stats-bars"></i>
         </div>
-        <a href="#" class="small-box-footer">Xem chi tiết <i class="fas fa-arrow-circle-right"></i></a>
+        <a href="{{ route('order.index') }}" class="small-box-footer">Xem chi tiết <i class="fas fa-arrow-circle-right"></i></a>
       </div>
     </div>
     <!-- ./col -->
@@ -74,8 +74,9 @@
   </div>
   <!-- /.row -->
   <div class="row">
+
     <div class="col-sm-8">
-      <h5 class="text-danger font-weight-bold">Thống kê doanh thu</h5>
+      <h5 class="text-danger text-center font-weight-bold">Thống kê doanh thu</h5>
       <div class="row d-flex justify-content-center">
         <div class="col-sm-12">
           <div id="firstchart" style="height: 350px"></div>
@@ -95,44 +96,12 @@
         </div>
       </div>
     </div>
+
     <div class="col-sm-4">
-      <div class="card bg-transparent">
-        <div class="card-header">
-          <h3 class="card-title">
-            <i class="fas fa-text-width"></i>
-            Thống kê tháng
-          </h3>
-          <div class="card-tools">
-            <div class="input-group input-group-sm" style="width: 100px;">
-              <select class="custom-select mr-sm-2" id="statistic-to-month">
-              </select>
-            </div>
-          </div>
-        </div>
-        <div class="card-body">
-          <ul>
-            <li>Tổng doanh thu:</li>
-            <li>Số sản phẩm đã bán:</li>
-            <li>Số đơn hàng:</li>
-            <li>Bán chạy:
-              <ul>
-                <li>Phasellus iaculis neque</li>
-                <li>Purus sodales ultricies</li>
-                <li>Vestibulum laoreet porttitor sem</li>
-                <li>Ac tristique libero volutpat at</li>
-              </ul>
-            </li>
-            <li>Số bình luận:</li>
-          </ul>
-        </div>
-        <!-- /.card-body -->
-      </div>
-      
-    </div>
-    <div class="col-sm-4">
-      <h5 class="text-danger text-center font-weight-bold">Sản phẩm</h5>
+      <h5 class="text-danger text-center font-weight-bold mb-5">Sản phẩm</h5>
       <div id="chart_donut" style="height: 250px"></div>
     </div>
+
   </div>
 </div>
 

@@ -59,7 +59,7 @@
                 @endif
               </td>
               <td>
-                @if ($order->order_status == 0)
+                @if ($order->order_status != 2)
                   <span class="text-danger">Chưa nhận hàng</span>
                 @else
                   <span class="text-primary">Đã nhận hàng</span>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Order;
 use App\Models\Product;
 use App\Models\ProductCategory;
 use App\Models\Statistic;
@@ -17,6 +18,7 @@ class HomeController extends Controller
     public function index(){
         $data = [];
         $data['product'] = Product::all()->count();
+        $data['order'] = Order::all()->count();
         $data['account'] = User::all()->count();
         $data['first_category'] = ProductCategory::first();
         return view('backend.home', compact('data', $data));
@@ -64,6 +66,7 @@ class HomeController extends Controller
                 'value' => $val->qty,
             ); 
         }
+        
         return response()->json(['data' => $data, 'status' => 1], 200);
     }
     

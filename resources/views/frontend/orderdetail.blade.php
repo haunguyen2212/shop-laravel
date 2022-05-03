@@ -37,7 +37,7 @@
                             <div>Trạng thái thanh toán: <span class="text-primary">Đã thanh toán</span></div>
                         @endif
 
-                        @if ($order->order_status == 0)
+                        @if ($order->order_status != 2)
                         <div>Tình trạng: <span class="text-danger">Chưa nhận hàng</span></div>
                         @else
                         <div>Tình trạng: <span class="text-primary">Đã nhận hàng</span></div>
@@ -79,8 +79,10 @@
                     <div class="order-footer">
 
                         @if ($order->payment_status == 0)
-                            <a href="{{ route('order.cancel', ['id' => $order->order_id]) }}" class="text-danger"><i class="fas fa-times"></i> Hủy đơn hàng</a>&emsp;
-                            <a href="{{ route('vnpay', ['id' => $order->order_id]) }}" class="text-primary"><i class="fas fa-credit-card"></i> Thanh toán online</a>
+                            @if ($order->order_status == 0)
+                                <a href="{{ route('order.cancel', ['id' => $order->order_id]) }}" class="text-danger"><i class="fas fa-times"></i> Hủy đơn hàng</a>&emsp;
+                                <a href="{{ route('vnpay', ['id' => $order->order_id]) }}" class="text-primary"><i class="fas fa-credit-card"></i> Thanh toán online</a>  
+                            @endif
                         @endif
        
                     </div>
